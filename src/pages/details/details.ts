@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -10,11 +9,10 @@ import { AlertController } from 'ionic-angular';
 export class DetailsPage {
   value:any
   searchQuery: string=''; 
-  description='Some people are suggesting me to watch the movie,so I want to know whether its good or not'
   upvotes=32
   downvotes=5
   ch=0
-  username="\0"
+  username="{{Username}}"
   check1: boolean=false
   check: boolean=false
   today = Date.now();
@@ -23,7 +21,7 @@ export class DetailsPage {
   comments=[];
   aname="Aayush Saxena"
   atime="19th Feb, 2019 16:34pm"
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.value=navParams.get('detail')
   }
   
@@ -55,35 +53,6 @@ export class DetailsPage {
     }
   }
 
-  alert(){
-    if(this.username=="\0"){
-    let alert = this.alertCtrl.create({
-      title: 'Enter Name',
-      inputs: [
-        {
-          name: 'username',
-          placeholder: 'Username',
-          type: 'text',
-          id: 'username'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Submit',
-          role: 'submit'
-        },
-        {
-          handler: data => {
-            this.username=data.username
-          }
-        }
-      ]
-    })
-    alert.present();
-    }else{
-      this.submit();
-    }
-  }
   submit(){
     this.today = Date.now();
     this.d= new Date();

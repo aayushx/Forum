@@ -11,13 +11,13 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="master">
+<ion-content class="master">
 
-<div *ngFor="let detail of details" >
+<div *ngFor="let detail of details; let i= index" >
   
 <ion-card>
 
-  <ion-item class="deets" (click)="Details()">
+  <ion-item class="deets" (click)="Details(i)">
   
     <ion-avatar item-start>
         <img src="assets/imgs/images.png">
@@ -25,30 +25,30 @@
 
     <h2 style="color: white;">{{detail.name}}</h2>
 
-    <p style="color: wheat;">{{detail.date}} {{detail.time}}</p>
+    <p style="color: wheat;">{{detail.date}} &nbsp; {{detail.time}}</p>
 
   </ion-item>
 
   <br>
 
     <ion-card-content>
-      <div class="question-type" (click)="Details()">
+      <div class="question-type" (click)="Details(i)">
         {{detail.qtype}}
       </div>
       
-      <div class="question" (click)="Details()">
+      <div class="question" (click)="Details(i)">
         Q: {{detail.question}}
       </div>
 
-      <div class="sh-ans" (click)="Details()">
-        {{detail.answer}}
+      <div class="sh-ans" (click)="Details(i)">
+        {{detail.description}}
       </div>
 
 
       <div style="text-align: center; ">
 
         <span>
-          <button ion-button clear class="vote" (click)="inc()">
+          <button ion-button clear class="vote" (click)="inc(i)">
             <ion-icon name="arrow-round-up"></ion-icon>
             &ensp;&ensp;{{detail.upvotes - detail.downvotes}}
           </button>
@@ -57,7 +57,7 @@
       &ensp;
 
       <span>
-        <button ion-button clear class="vote" (click)="dec()">
+        <button ion-button clear class="vote" (click)="dec(i)">
           <ion-icon name="arrow-round-down"></ion-icon>
         </button>
       </span>

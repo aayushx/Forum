@@ -16,13 +16,16 @@ page-details {
         display:block;
     }
     .card-md{
-        border-radius: 3.5rem;
-        background-color:  rgb(33, 150, 243);
+        border-radius: 6px;
+        border-bottom-left-radius: 2.5rem;
+        border-bottom-right-radius: 2.5rem;
+        background-color: cornflowerblue;
     }
     .deets{
         background-color: lightslategray;
         color: white;
-        border-radius: 4rem;
+        border-bottom-left-radius: 2rem;
+        border-bottom-right-radius: 2rem;
     }
     
     .description{
