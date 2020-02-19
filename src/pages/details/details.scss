@@ -1,0 +1,43 @@
+page-details {
+    .master{
+        background: rgb(77, 77, 77);
+    }
+    
+    .deet{
+        background-color: transparent;
+    }
+    .label-md {
+        margin: 12px 8px 13px 0;
+    }
+    .question{
+        font-size: 1.8rem;
+        font-weight: bold;;
+        color: white;
+        display:block;
+    }
+    .card-md{
+        border-radius: 3.5rem;
+        background-color:  rgb(33, 150, 243);
+    }
+    .deets{
+        background-color: lightslategray;
+        color: white;
+        border-radius: 4rem;
+    }
+    .vote{
+        padding: 0;
+    }
+    .description{
+        display: block;
+        color: white;
+        
+    }
+    .comment{
+        position: fixed;
+        padding: 10px;
+        padding-right: 65px;
+    }
+    .textbox{
+        border-radius: 5px !important;
+    }
+}
