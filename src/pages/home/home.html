@@ -1,14 +1,49 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
+    <ion-title item-center class="forum">
+      Forum
     </ion-title>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar> 
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding class="master">
+
+<div *ngFor="let detail of details" >
+  
+<ion-card>
+  <ion-item class="deets" (click)="Details()">
+      <ion-avatar item-start>
+        <img src="assets/imgs/images.png">
+      </ion-avatar>
+      <h2 style="color: white;">{{detail.name}}</h2>
+      <p style="color: wheat;">{{detail.date}} {{detail.time}}</p>
+      <span item-right> 
+        {{detail.answers}}
+        <ion-icon name="md-create"></ion-icon>
+        &ensp;&ensp;
+        {{detail.views}}
+        <ion-icon name="md-eye"></ion-icon>
+      </span>
+    </ion-item>
+    <br>
+    <ion-card-content>
+      <div class="question-type">
+        {{detail.qtype}}
+      </div>
+      
+      <div class="question">
+        Q: {{detail.question}}
+      </div>
+      <div class="sh-ans">
+        {{detail.answer}}
+      </div>
+      <div style="text-align: center;">
+        <button ion-button clear class="share" (click)="Share()">
+          <ion-icon name="share"></ion-icon>
+        </button>
+      </div>
+    </ion-card-content>
+</ion-card>
+</div>
 </ion-content>
