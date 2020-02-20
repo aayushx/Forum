@@ -62,29 +62,32 @@
         </ion-card-content>
     </ion-card>
 
-
-    <ion-card *ngIf="check">
+  <div *ngFor="let comment of comments">
+    <div *ngIf="check">
+    <ion-card>
       <ion-item class="deets">
           <ion-avatar item-start>
             <img src="assets/imgs/images.png">
           </ion-avatar>
-          <h2 style="color: white;">{{dname}}</h2>
-          <p style="color: wheat;">{{dtime}}</p>
+          <h2 style="color: white;">{{comment.dname}}</h2>
+          <p style="color: wheat;">{{comment.dtime}}</p>
         </ion-item>
         <br>
         <ion-card-content>
           <div class="description">
-            {{comment}}
+            {{comment.comm}}
           </div>
         </ion-card-content>
     </ion-card>
+  </div>
+  </div>
     
 
 
     <ion-footer class="comment">
-        <ion-input type="text" placeholder="Add a comment.." class="textbox" [(ngModel)]="comment"></ion-input>
+        <ion-input type="text" placeholder="Add a comment.." class="textbox" [(ngModel)]="cc"></ion-input>
         <ion-fab right bottom>
-          <button ion-fab (click)="submit()"><ion-icon name="paper-plane"></ion-icon></button>
+          <button ion-fab (click)="alert()"><ion-icon name="paper-plane"></ion-icon></button>
         </ion-fab>
     </ion-footer>
   </div>

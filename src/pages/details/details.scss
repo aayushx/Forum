@@ -33,7 +33,8 @@ page-details {
         
     }
     .comment{
-        position: fixed;
+        position: relative;
+        bottom: 0px;
         padding: 10px;
         padding-right: 65px;
     }

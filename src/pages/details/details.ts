@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -13,16 +14,16 @@ export class DetailsPage {
   upvotes=10
   downvotes=5
   ch=0
-  check: boolean=false
+  username="\0"
   check1: boolean=false
-  comment=""
+  check: boolean=false
   today = Date.now();
   d= new Date();
-  dtime:any=new Date().toString();
-  dname="Developer"
+  cc='';
+  comments=[];
   aname="Aayush Saxena"
   atime="19th Feb, 2019 16:34pm"
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
     this.value=navParams.get('detail')
   }
   inc(){
@@ -44,12 +45,48 @@ export class DetailsPage {
       this.ch=0;
     }
   }
+  alert(){
+    if(this.username=="\0"){
+    let alert = this.alertCtrl.create({
+      title: 'Enter Name',
+      inputs: [
+        {
+          name: 'username',
+          placeholder: 'Username',
+          type: 'text',
+          id: 'username'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Submit',
+          role: 'submit'
+        },
+        {
+          handler: data => {
+            this.username=data.username
+          }
+        }
+      ]
+    })
+    alert.present();
+    }else{
+      this.submit();
+    }
+  }
   submit(){
-    this.check=true
-    this.comment=this.comment
+    this.today = Date.now();
+    this.d= new Date();
+    this.check=true;
+    this.cc=this.cc;
+    if(this.cc!="")
+      this.comments.push({'dname':this.username , 'dtime':new Date().toString(),
+                        'comm':this.cc})
+    this.cc="";
+    this.username="\0";
   }
   Answer(){
-    this.check1=true
+    this.check1=!(this.check1);
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailsPage');
