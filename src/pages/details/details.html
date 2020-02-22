@@ -22,19 +22,7 @@
     <div class="description">
        {{description}}
     </div>
-      <span>
-        <button ion-button clear class="vote" (click)="inc()">
-          <ion-icon name="arrow-round-up"></ion-icon>
-          &ensp;{{upvotes}}
-        </button>
-      </span> 
-      &ensp;
-      <span>
-        <button ion-button clear class="vote" (click)="dec()">
-          <ion-icon name="arrow-round-down"></ion-icon>
-          &ensp;{{downvotes}}
-        </button>
-      </span>
+      
     </ion-card-content>
   </ion-card>
 
@@ -48,17 +36,37 @@
 
     <ion-card *ngIf="check1">
       <ion-item class="deets">
+
           <ion-avatar item-start>
             <img src="assets/imgs/images.png">
           </ion-avatar>
           <h2 style="color: white;">{{aname}}</h2>
           <p style="color: wheat;">{{atime}}</p>
         </ion-item>
+        
         <br>
+
         <ion-card-content>
+
           <div class="description">
             {{value.answer}}
           </div>
+          <br>
+          <span>
+            <button ion-button clear class="vote" (click)="inc()">
+              <ion-icon name="arrow-round-up"></ion-icon>
+              &ensp;&ensp;{{upvotes - downvotes}}
+            </button>
+          </span>
+  
+          &ensp;
+  
+          <span>
+           <button ion-button clear class="vote" (click)="dec()">
+              <ion-icon name="arrow-round-down"></ion-icon>
+            </button>
+          </span>
+
         </ion-card-content>
     </ion-card>
 
@@ -77,6 +85,23 @@
           <div class="description">
             {{comment.comm}}
           </div>
+
+          <br>
+          <span>
+            <button ion-button clear class="vote" (click)="inc()">
+              <ion-icon name="arrow-round-up"></ion-icon>
+              &ensp;&ensp;{{comment.upvoted - comment.downvoted}}
+            </button>
+          </span>
+  
+          &ensp;
+  
+          <span>
+           <button ion-button clear class="vote" (click)="dec()">
+              <ion-icon name="arrow-round-down"></ion-icon>
+            </button>
+          </span>
+
         </ion-card-content>
     </ion-card>
   </div>
@@ -85,9 +110,9 @@
 
 
     <ion-footer class="comment">
-        <ion-input type="text" placeholder="Add a comment.." class="textbox" [(ngModel)]="cc"></ion-input>
+        <ion-input type="text" placeholder="Add a Answer.." class="textbox" [(ngModel)]="cc"></ion-input>
         <ion-fab right bottom>
-          <button ion-fab (click)="alert()"><ion-icon name="paper-plane"></ion-icon></button>
+          <button ion-fab (click)="submit()"><ion-icon name="paper-plane"></ion-icon></button>
         </ion-fab>
     </ion-footer>
   </div>

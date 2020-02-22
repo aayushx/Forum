@@ -12,21 +12,21 @@
 <div *ngFor="let detail of details" >
   
 <ion-card>
+
   <ion-item class="deets" (click)="Details()">
-      <ion-avatar item-start>
+  
+    <ion-avatar item-start>
         <img src="assets/imgs/images.png">
-      </ion-avatar>
-      <h2 style="color: white;">{{detail.name}}</h2>
-      <p style="color: wheat;">{{detail.date}} {{detail.time}}</p>
-      <span item-right> 
-        {{detail.answers}}
-        <ion-icon name="md-create"></ion-icon>
-        &ensp;&ensp;
-        {{detail.views}}
-        <ion-icon name="md-eye"></ion-icon>
-      </span>
-    </ion-item>
-    <br>
+    </ion-avatar>
+
+    <h2 style="color: white;">{{detail.name}}</h2>
+
+    <p style="color: wheat;">{{detail.date}} {{detail.time}}</p>
+
+  </ion-item>
+
+  <br>
+
     <ion-card-content>
       <div class="question-type">
         {{detail.qtype}}
@@ -35,15 +35,40 @@
       <div class="question">
         Q: {{detail.question}}
       </div>
+
       <div class="sh-ans">
         {{detail.answer}}
       </div>
-      <div style="text-align: center;">
+
+
+      <div style="text-align: center; ">
+
+        <span>
+          <button ion-button clear class="vote" (click)="inc()">
+            <ion-icon name="arrow-round-up"></ion-icon>
+            &ensp;&ensp;{{detail.upvotes - detail.downvotes}}
+          </button>
+      </span>
+
+      &ensp;
+
+      <span>
+        <button ion-button clear class="vote" (click)="dec()">
+          <ion-icon name="arrow-round-down"></ion-icon>
+        </button>
+      </span>
+
         <button ion-button clear class="share" (click)="Share()">
           <ion-icon name="share"></ion-icon>
-        </button>
+        </button> 
+
+        <div class="edits">
+          {{detail.answers}}
+          <ion-icon name="md-create"></ion-icon>
+        </div>
       </div>
     </ion-card-content>
 </ion-card>
 </div>
+
 </ion-content>

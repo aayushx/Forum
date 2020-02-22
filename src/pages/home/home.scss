@@ -23,6 +23,10 @@ page-home {
         font-weight: 800;
         color: white;
     }
+    .vote{
+        padding: 0;
+        color: white;
+    }   
     .sh-ans{
         color: white;
     }
@@ -30,5 +34,13 @@ page-home {
         color: white !important;    
         font-size: large;
         
+    }
+    .edits{
+        color: white;
+        display: inline-block;
+        font-weight: inherit;
+        min-height: 36px;
+        font-size: 17px;
+        vertical-align: -6px;
     }
 }
