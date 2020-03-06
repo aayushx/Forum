@@ -43,4 +43,22 @@ page-home {
         font-size: 17px;
         vertical-align: -6px;
     }
+    .fab-close-icon{
+        color: white;
+        opacity: 100 !important;
+        font-size: 50px;
+    }
+    .search{
+        float: right;
+        color: black !important;
+        font-size: 20px;
+        padding: 0;
+        padding-left: 15px;
+    }
+    #forum{
+        float:left;
+        color: black;
+        font-size: 18px;
+        font-weight: 400;
+    }
 }

@@ -1,9 +1,13 @@
 <ion-header>
   <ion-navbar>
     <ion-title item-center class="forum">
-      Forum
+      <button ion-button clear id="forum">Forum</button>
+      <button ion-button clear class="search" (click)="Filter()"><ion-icon name="ios-funnel-outline"></ion-icon></button>
+      <button ion-button clear class="search" (click)="Search()"><ion-icon name="search"></ion-icon></button>
     </ion-title>
+    <ion-item *ngIf="csearch" style="background-color: transparent;">
     <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar> 
+  </ion-item>
   </ion-navbar>
 </ion-header>
 
@@ -28,15 +32,15 @@
   <br>
 
     <ion-card-content>
-      <div class="question-type">
+      <div class="question-type" (click)="Details()">
         {{detail.qtype}}
       </div>
       
-      <div class="question">
+      <div class="question" (click)="Details()">
         Q: {{detail.question}}
       </div>
 
-      <div class="sh-ans">
+      <div class="sh-ans" (click)="Details()">
         {{detail.answer}}
       </div>
 
@@ -71,4 +75,7 @@
 </ion-card>
 </div>
 
+<ion-fab right bottom>
+  <button ion-fab (click)="AddPage()"><ion-icon name="add-outline" id="addbutton"></ion-icon></button>
+</ion-fab>
 </ion-content>

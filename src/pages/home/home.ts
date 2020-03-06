@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import {DetailsPage} from '../details/details';
 import { SocialSharing } from '@ionic-native/social-sharing'
 import { Http } from '@angular/http';
+import {AddPage} from '../add/add'
 
 @Component({
   selector: 'page-home',
@@ -11,6 +12,7 @@ import { Http } from '@angular/http';
 export class HomePage {
   searchQuery: string = ''
   ch=0
+  csearch=0
    details = [{'name':'Rahul','date':'18th Feb, 2019','time':'13:47pm',
                 "qtype":'Movies','question':'What is Baaghi 2?','answers':10,
                 'answer':'Baaghi 2 is the world worst movie you can ever watch.',
@@ -76,4 +78,21 @@ export class HomePage {
     });
   }
   
+  AddPage(){
+    this.navCtrl.push(AddPage,{
+
+    })
+  }
+
+  Search(){
+    if(this.csearch==0)
+      this.csearch=1;
+    else 
+      this.csearch=0;
+  }
+
+  Filter(){
+    
+  }
+
 }
