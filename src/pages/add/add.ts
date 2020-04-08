@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
-
+import {Http} from '@angular/http';
 
 @IonicPage()
 @Component({
@@ -14,9 +13,13 @@ export class AddPage {
   question=""
   desc=""
   username="{{Username}}"
+  uid=12345
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.details=navParams.get('detail')
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams, 
+              public http: Http) {
+
+    
   }
 
   ionViewDidLoad() {
@@ -27,15 +30,21 @@ export class AddPage {
   Submit(){
     if(this.category!=""&&this.desc!=""&&this.question!=""){
 
-      this.details.push({'name':this.username,'date':new Date().toDateString(), 
-                          'time':new Date().toTimeString(), 'qtype':this.category,
-                          'question':this.question,'answers':0,'answer':'Not Answered',
-                          'description':this.desc,
-                          'upvotes':0,'downvotes':0,'ch':0})
-
-      this.navCtrl.push(HomePage,{
-        detail:this.details
-      })
+                          var body= {
+                            name: "Username",
+                            question: this.question,
+                            date: new Date().toDateString(),
+                            questiontitle: this.question,
+                            userid: this.uid,
+                            description: this.desc,
+                            time: new Date().toTimeString(),
+                            qtype: this.category
+                          }
+                          this.http.post('http://localhost:3000/uploadquestion',body).subscribe(res =>{
+                            console.log("success")
+                          })                    
+      
+      this.navCtrl.pop();
     }
     }
   }

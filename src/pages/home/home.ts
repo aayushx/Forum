@@ -12,37 +12,21 @@ import {AddPage} from '../add/add'
 export class HomePage {
   searchQuery: string = ''
   csearch=0
+  category=""
+  cc=""
 
-   details = [{'name':'Rahul','date':'18th Feb, 2019','time':'13:47pm',
-                "qtype":'Movies','question':'What is Baaghi 2?','answers':10,
-                'answer':'Baaghi 2 is the world worst movie you can ever watch.',
-                'description':'Some people are suggesting me to watch the movie,so I want to know whether its good or not',
-                'upvotes':10 , 'downvotes':5,'ch':0},
-                
-                {'name':'Hitesh','date':'23th Feb, 2019','time':'3:32pm',
-                'qtype':'College Life','question':'Sample question?','answers':14,
-                'answer':'Sample answer for question.',
-                'description':'Sample description for understanding.',
-                 'upvotes':14 , 'downvotes':3,'ch':0}]
-  todos: any;
+  details: any;
   constructor(public navCtrl: NavController,
               private socialSharing: SocialSharing,
               public http: Http,
               public navParams: NavParams) {
-                const detail=navParams.get('detail')
-                if(detail!=null){
-                  this.details=detail
-                }
-    
-  }
-  getItems(ev: any) {
-    const val = ev.target.value;
 
-    if (val && val.trim() != '') {
-      // this.details.qtype = this.details.filter((item) => {
-        // return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      // })
-    }
+                this.http.get('http://localhost:3000/disquestions').subscribe(res=>{
+                    this.details = res.json();
+                },err =>{
+                    console.log("Server Down")
+                })
+    
   }
 
   inc(i:number){
@@ -85,9 +69,7 @@ export class HomePage {
   }
   
   AddPage(){
-    this.navCtrl.push(AddPage,{
-      detail:this.details
-    })
+    this.navCtrl.push(AddPage)
   }
 
   Search(){
@@ -97,8 +79,40 @@ export class HomePage {
       this.csearch=0;
   }
 
-  Filter(){
+  Filter(category:string){
+    var body={
+      category: category
+    }
+    this.http.post('http://localhost:3000/filter',body).subscribe(res=>{
+      this.details=res.json();
+    })
+  }
+
+  onCancel(){
+    this.http.get('http://localhost:3000/disquestions').subscribe(res=>{
+                    this.details = res.json();
+                },err =>{
+                    console.log("Server Down")
+                })
     
+  }
+
+
+  SearchString(term:string){
+    var body={
+      term:term
+    }
+    this.http.post('http://localhost:3000/search',body).subscribe(res=>{
+      this.details=res.json();
+    })
+  }
+
+  ionViewWillEnter(){
+    this.http.get('http://localhost:3000/disquestions').subscribe(res=>{
+                    this.details = res.json();
+                },err =>{
+                    console.log("Server Down")
+                })
   }
 
 }

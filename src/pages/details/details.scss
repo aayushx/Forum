@@ -46,4 +46,11 @@ page-details {
     .textbox{
         border-radius: 5px !important;
     }
+    .voter{
+        display: inline-block;
+    }
+    #upvote{
+        color: white !important;
+        opacity: 100 !important;
+    }
 }
